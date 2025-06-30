@@ -2012,10 +2012,6 @@ const Home = () => {
           <div className="row align-items-center min-vh-100">
             <div className="col-lg-6 mb-5 mb-lg-0">
               <div className="hero-content">
-                <span className="badge badge-luxury mb-4">
-                  <i className="fas fa-crown me-2"></i>
-                  Premium Interior Design
-                </span>
                 <h1 className="hero-title">
                   Transform Your
                   <span className="text-luxury"> Dream Space</span>
