@@ -1,5 +1,3 @@
-"use client";
-
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 
@@ -17,82 +15,6 @@ const About = () => {
   return (
     <div className="interior-about">
       {/* Elegant Navbar */}
-      {/* <nav className="navbar navbar-expand-lg navbar-light bg-white shadow-elegant sticky-top">
-        <div className="container">
-          <Link className="navbar-brand brand-elegant" to="/">
-            <img
-              src="assets/images/logo.png"
-              alt="Logo"
-              height="45"
-              className="me-3 logo-bounce"
-            />
-            <span className="brand-text">InteriorPro</span>
-          </Link>
-
-          <button
-            className="navbar-toggler border-0"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarNav"
-            aria-controls="navbarNav"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span className="navbar-toggler-icon"></span>
-          </button>
-      
-
-          <div className="collapse navbar-collapse" id="navbarNav">
-            <ul className="navbar-nav mx-auto nav-elegant">
-              <li className="nav-item nav-item-elegant">
-                <Link className="nav-link nav-link-elegant" to="/">
-                  Home
-                </Link>
-              </li>
-              <li className="nav-item nav-item-elegant">
-                <Link className="nav-link active nav-link-elegant" to="/about">
-                  About
-                </Link>
-              </li>
-              <li className="nav-item nav-item-elegant">
-                <Link className="nav-link nav-link-elegant" to="/services">
-                  Services
-                </Link>
-              </li>
-              <li className="nav-item nav-item-elegant">
-                <Link className="nav-link nav-link-elegant" to="/portfolio">
-                  Portfolio
-                </Link>
-              </li>
-              <li className="nav-item nav-item-elegant">
-                <Link className="nav-link nav-link-elegant" to="/blog">
-                  Blog
-                </Link>
-              </li>
-              <li className="nav-item nav-item-elegant">
-                <Link className="nav-link nav-link-elegant" to="/contact">
-                  Contact
-                </Link>
-              </li>
-            </ul>
-            <div className="d-flex align-items-center">
-              <div className="contact-info me-4">
-                <h6 className="contact-phone">+44 20 7722 0088</h6>
-                <Link to="/contact" className="contact-link">
-                  Order a call
-                </Link>
-              </div>
-              <Link
-                to="/contact"
-                className="btn btn-luxury rounded-pill px-4 py-2"
-              >
-                Get Quote
-              </Link>
-            </div>
-          </div>
-        </div>
-      </nav> */}
-
       <nav className="navbar navbar-expand-lg navbar-light bg-white shadow-elegant sticky-top">
         <div className="container">
           <Link className="navbar-brand brand-elegant" to="/">
@@ -204,7 +126,10 @@ const About = () => {
                         Home
                       </Link>
                     </li>
-                    <li className="breadcrumb-item active" aria-current="page">
+                    <li
+                      className="breadcrumb-item active text-dark"
+                      aria-current="page"
+                    >
                       About Us
                     </li>
                   </ol>

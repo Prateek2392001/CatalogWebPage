@@ -295,7 +295,10 @@ const Services = () => {
                         Home
                       </Link>
                     </li>
-                    <li className="breadcrumb-item active" aria-current="page">
+                    <li
+                      className="breadcrumb-item active text-dark"
+                      aria-current="page"
+                    >
                       Services
                     </li>
                   </ol>
