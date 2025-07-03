@@ -196,7 +196,11 @@ const Contact = () => {
                         Home
                       </Link>
                     </li>
-                    <li className="breadcrumb-item active" aria-current="page">
+                    <span className="separator">/</span>
+                    <li
+                      className="breadcrumb-item active text-white"
+                      aria-current="page"
+                    >
                       Contact
                     </li>
                   </ol>

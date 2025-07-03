@@ -3,9 +3,9 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import About from "./Pages/About";
 import Services from "./Pages/Services";
 import Portfolio from "./Pages/Portfolio";
-import Home from "./components/Home/Home";
 import Blog from "./Pages/Blog";
 import Contact from "./Pages/Contact";
+import Home from "./components/HomePage/Home";
 
 function App() {
   useEffect(() => {
@@ -52,8 +52,6 @@ function App() {
         <Route path="/portfolio" element={<Portfolio />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/contact" element={<Contact />} />
-
-        {/* Add more routes as needed */}
       </Routes>
     </Router>
   );

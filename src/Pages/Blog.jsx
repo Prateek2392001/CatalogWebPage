@@ -13,7 +13,6 @@ const Blog = () => {
   };
 
   useEffect(() => {
-    // Trigger animation on component mount
     setTimeout(() => setAnimateCards(true), 300);
   }, []);
 
@@ -195,16 +194,6 @@ const Blog = () => {
           </div>
         </div>
       </nav>
-
-      {/* Header Search */}
-      {/* <div className="header-search d-flex flex-wrap justify-content-center align-items-center w-100">
-        <span className="search-close-btn">
-          <i className="fas fa-times"></i>
-        </span>
-        <form>
-          <input type="text" placeholder="Search articles..." />
-        </form>
-      </div> */}
 
       {/* Mobile Menu */}
       <div className="responsive-mobile-menu">
