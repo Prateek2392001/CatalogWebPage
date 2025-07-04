@@ -1,7 +1,37 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-const LatestProject = ({ projects, currentProject, setCurrentProject }) => {
+const LatestProject = ({ projects }) => {
+  const [currentProject, setCurrentProject] = useState(0);
+  const [imageLoaded, setImageLoaded] = useState(true);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentProject((prev) => (prev + 1) % projects.length);
+    }, 4000); // change every 4 seconds
+
+    return () => clearInterval(interval); // cleanup on unmount
+  }, [projects.length]);
+
+  useEffect(() => {
+    const preload = new Image();
+    preload.src = projects[currentProject].img;
+    preload.onload = () => {
+      setImageLoaded(true);
+    };
+    preload.onerror = () => {
+      setImageLoaded(false);
+    };
+  }, [currentProject, projects]);
+
+  const handlePrev = () => {
+    setCurrentProject((prev) => (prev - 1 + projects.length) % projects.length);
+  };
+
+  const handleNext = () => {
+    setCurrentProject((prev) => (prev + 1) % projects.length);
+  };
+
   return (
     <section className="section-luxury latest-projects-section">
       <div className="fixed-bg bg1"></div>
@@ -21,8 +51,7 @@ const LatestProject = ({ projects, currentProject, setCurrentProject }) => {
                 beautiful solutions and we are glad that you, our customers.
               </p>
               <Link to="/portfolio" className="btn btn-luxury-light">
-                View More Projects
-                <i className="fas fa-arrow-right ms-2"></i>
+                View More Projects <i className="fas fa-arrow-right ms-2"></i>
               </Link>
             </div>
           </div>
@@ -40,14 +69,23 @@ const LatestProject = ({ projects, currentProject, setCurrentProject }) => {
                       transform: `translateX(${
                         (index - currentProject) * 100
                       }%)`,
-                      opacity: index === currentProject ? 1 : 0.7,
+                      opacity: index === currentProject ? 1 : 0,
+                      zIndex: index === currentProject ? 2 : 1,
+                      pointerEvents: index === currentProject ? "auto" : "none",
                     }}
                   >
                     <div className="project-image-container">
                       <img
-                        src={item.img || "/placeholder.svg"}
+                        src={item.img}
                         alt={item.title}
                         className="project-image"
+                        onLoad={() => setImageLoaded(true)}
+                        onError={(e) => {
+                          e.target.src =
+                            "/assets/images/resources/placeholder.jpg";
+                          setImageLoaded(false);
+                        }}
+                        style={{ display: imageLoaded ? "block" : "none" }}
                       />
                       <div className="project-overlay">
                         <div className="project-info">
@@ -55,9 +93,7 @@ const LatestProject = ({ projects, currentProject, setCurrentProject }) => {
                             {item.category}
                           </span>
                           <h3 className="project-title">
-                            <Link to="/portfolio-details" title="">
-                              {item.title}
-                            </Link>
+                            <Link to="/portfolio-details">{item.title}</Link>
                           </h3>
                           <span className="project-count">{item.count}</span>
                         </div>
@@ -70,19 +106,13 @@ const LatestProject = ({ projects, currentProject, setCurrentProject }) => {
               <div className="project-controls">
                 <button
                   className="project-control-btn prev"
-                  onClick={() =>
-                    setCurrentProject(
-                      (prev) => (prev - 1 + projects.length) % projects.length
-                    )
-                  }
+                  onClick={handlePrev}
                 >
                   <i className="fas fa-chevron-left"></i>
                 </button>
                 <button
                   className="project-control-btn next"
-                  onClick={() =>
-                    setCurrentProject((prev) => (prev + 1) % projects.length)
-                  }
+                  onClick={handleNext}
                 >
                   <i className="fas fa-chevron-right"></i>
                 </button>
